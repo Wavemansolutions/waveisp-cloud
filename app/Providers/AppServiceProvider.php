@@ -2,23 +2,24 @@
 
 namespace App\Providers;
 
+use App\Support\SiteSettings;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Throwable;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        //
+        try {
+            View::share('siteSettings', SiteSettings::all());
+        } catch (Throwable $e) {
+            View::share('siteSettings', []);
+        }
     }
 }

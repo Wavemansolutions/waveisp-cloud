@@ -1,14 +1,28 @@
+@php
+    $s = $siteSettings ?? [];
+
+    $brand = $s['brand_name'] ?? 'WaveISP';
+    $tagline = $s['brand_tagline'] ?? 'Connect. Surf. Live.';
+    $logoText = $s['logo_text'] ?? 'W';
+    $primary = $s['primary_color'] ?? '#0b63f6';
+    $accent = $s['accent_color'] ?? '#ffd04f';
+    $dark = $s['dark_color'] ?? '#061b51';
+    $phone = $s['support_phone'] ?? '+234 813 696 3037';
+    $whatsapp = preg_replace('/[^0-9]/', '', $s['support_whatsapp'] ?? '2348136963037');
+    $location = $s['business_location'] ?? 'Port Harcourt, Rivers State';
+    $footerText = $s['footer_text'] ?? 'Cloud HotSpot billing for MikroTik routers.';
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Support - WaveISP</title>
+    <title>{{ $s['support_title'] ?? 'Support' }} - {{ $brand }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{{ $s['favicon_url'] ?? '/favicon.svg' }}">
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -17,15 +31,13 @@
             color: #06143d;
         }
 
-        a {
-            text-decoration: none;
-        }
+        a { text-decoration: none; }
 
         .top-shell {
             padding: 18px 24px 42px;
             background:
-                radial-gradient(circle at 70% 20%, rgba(38, 108, 255, 0.20), transparent 28%),
-                linear-gradient(90deg, #ffffff 0%, #edf5ff 44%, #0a62ee 100%);
+                radial-gradient(circle at 70% 20%, color-mix(in srgb, {{ $primary }} 22%, transparent), transparent 28%),
+                linear-gradient(90deg, #ffffff 0%, #edf5ff 44%, {{ $primary }} 100%);
         }
 
         .navbar {
@@ -45,13 +57,14 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            color: #06143d;
         }
 
         .logo {
             width: 54px;
             height: 54px;
             border-radius: 16px;
-            background: #0b63f6;
+            background: {{ $primary }};
             color: white;
             display: flex;
             align-items: center;
@@ -62,14 +75,10 @@
 
         .brand-text strong {
             display: block;
-            color: #0b63f6;
+            color: {{ $primary }};
             font-size: 31px;
             line-height: 1;
             letter-spacing: -1px;
-        }
-
-        .brand-text strong span {
-            color: #06143d;
         }
 
         .brand-text small {
@@ -93,12 +102,12 @@
         }
 
         .nav-links a.active {
-            color: #0b63f6;
-            border-bottom: 3px solid #0b63f6;
+            color: {{ $primary }};
+            border-bottom: 3px solid {{ $primary }};
         }
 
         .connect-btn {
-            background: #0b63f6;
+            background: {{ $primary }};
             color: white;
             padding: 14px 28px;
             border-radius: 8px;
@@ -120,35 +129,13 @@
             font-weight: 950;
         }
 
-        .page-title h1 span {
-            color: #0b63f6;
-        }
+        .page-title h1 span { color: {{ $primary }}; }
 
         .page-title p {
             color: #263b69;
             font-size: 17px;
             font-weight: 600;
             margin-top: 14px;
-        }
-
-        .separator-lines {
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            margin-top: 24px;
-        }
-
-        .separator-line {
-            height: 5px;
-            width: 140px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, #0b63f6, #59a3ff);
-            box-shadow: 0 6px 14px rgba(11, 99, 246, 0.22);
-        }
-
-        .separator-line.small {
-            width: 90px;
-            background: linear-gradient(90deg, #6fb2ff, #0b63f6);
         }
 
         .support-wrap {
@@ -177,22 +164,12 @@
             height: 70px;
             border-radius: 50%;
             background: #eaf3ff;
-            color: #0b63f6;
+            color: {{ $primary }};
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 34px;
             margin-bottom: 18px;
-        }
-
-        .support-card:nth-child(2) .support-icon {
-            background: #e9faef;
-            color: #20bb69;
-        }
-
-        .support-card:nth-child(3) .support-icon {
-            background: #f0e9ff;
-            color: #642de9;
         }
 
         .support-card h3 {
@@ -210,20 +187,15 @@
         .support-btn {
             display: inline-flex;
             margin-top: 12px;
-            background: #0b63f6;
+            background: {{ $primary }};
             color: white;
             padding: 12px 24px;
             border-radius: 10px;
             font-weight: 850;
         }
 
-        .green {
-            background: #20bb69;
-        }
-
-        .purple {
-            background: #642de9;
-        }
+        .green { background: #20bb69; }
+        .purple { background: #642de9; }
 
         .faq-box {
             margin-top: 34px;
@@ -243,9 +215,7 @@
             border-bottom: 1px solid #dfe7f5;
         }
 
-        .faq-item:last-child {
-            border-bottom: 0;
-        }
+        .faq-item:last-child { border-bottom: 0; }
 
         .faq-item strong {
             display: block;
@@ -259,41 +229,35 @@
         }
 
         .footer {
-            background: #061b51;
+            background: {{ $dark }};
             color: white;
-            padding: 24px;
+            padding: 34px 24px;
         }
 
         .footer-inner {
             max-width: 1280px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr 1fr;
+            gap: 24px;
         }
 
         .footer a,
         .footer p {
             color: #dbe8ff;
-            font-size: 13px;
+            font-size: 14px;
+            line-height: 1.7;
         }
 
-        @media (max-width: 1100px) {
-            .navbar {
-                padding: 13px 24px;
-            }
+        .footer strong span { color: {{ $accent }}; }
 
-            .nav-links {
-                gap: 22px;
-            }
-
-            .support-grid {
-                grid-template-columns: 1fr;
-            }
+        @@media (max-width: 1100px) {
+            .navbar { padding: 13px 24px; }
+            .nav-links { gap: 22px; }
+            .support-grid, .footer-inner { grid-template-columns: 1fr; }
         }
 
-        @media (max-width: 760px) {
+        @@media (max-width: 760px) {
             .navbar {
                 flex-direction: column;
                 gap: 16px;
@@ -305,22 +269,19 @@
                 gap: 20px;
             }
 
-            .page-title h1 {
-                font-size: 36px;
-            }
+            .page-title h1 { font-size: 36px; }
         }
     </style>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
 
 <div class="top-shell">
     <nav class="navbar">
         <a href="{{ route('portal.home') }}" class="brand">
-            <div class="logo">W</div>
+            <div class="logo">{{ $logoText }}</div>
             <div class="brand-text">
-                <strong>Wave<span>ISP</span></strong>
-                <small>Connect. Surf. Live.</small>
+                <strong>{{ $brand }}</strong>
+                <small>{{ $tagline }}</small>
             </div>
         </a>
 
@@ -338,17 +299,12 @@
 
     <div class="page-title">
         <h1>
-            Need <span>Support?</span>
+            <span>{{ $s['support_title'] ?? 'Need Support?' }}</span>
         </h1>
 
         <p>
-            Get help with payment, connection, expired plan, or data exhaustion.
+            {{ $s['support_subtitle'] ?? 'Get help with payment, connection, expired plan, or data exhaustion.' }}
         </p>
-
-        <div class="separator-lines">
-            <div class="separator-line"></div>
-            <div class="separator-line small"></div>
-        </div>
     </div>
 </div>
 
@@ -356,35 +312,26 @@
     <div class="support-grid">
         <div class="support-card">
             <div class="support-icon">💬</div>
-            <h3>WhatsApp Support</h3>
-            <p>
-                Chat with WaveISP support for quick help with payment,
-                login, connection, or plan activation.
-            </p>
-            <a href="https://wa.me/2348136963037" class="support-btn green">
+            <h3>{{ $s['support_whatsapp_title'] ?? 'WhatsApp Support' }}</h3>
+            <p>{{ $s['support_whatsapp_text'] ?? 'Chat with support for quick help.' }}</p>
+            <a href="https://wa.me/{{ $whatsapp }}" class="support-btn green">
                 Chat on WhatsApp
             </a>
         </div>
 
         <div class="support-card">
             <div class="support-icon">📞</div>
-            <h3>Call Support</h3>
-            <p>
-                Speak directly with support if your payment succeeded
-                but internet access did not activate.
-            </p>
-            <a href="tel:+2348136963037" class="support-btn">
-                +234 813 696 3037
+            <h3>{{ $s['support_call_title'] ?? 'Call Support' }}</h3>
+            <p>{{ $s['support_call_text'] ?? 'Speak directly with support.' }}</p>
+            <a href="tel:{{ $phone }}" class="support-btn">
+                {{ $phone }}
             </a>
         </div>
 
         <div class="support-card">
             <div class="support-icon">📶</div>
-            <h3>Connection Help</h3>
-            <p>
-                Restart Wi-Fi, reconnect to the hotspot, then open
-                neverssl.com if the captive portal does not appear.
-            </p>
+            <h3>{{ $s['support_connection_title'] ?? 'Connection Help' }}</h3>
+            <p>{{ $s['support_connection_text'] ?? 'Restart Wi-Fi and reconnect to the hotspot.' }}</p>
             <a href="{{ route('portal.plans') }}" class="support-btn purple">
                 View Plans
             </a>
@@ -394,43 +341,32 @@
     <div class="faq-box">
         <h2>Frequently Asked Questions</h2>
 
-        <div class="faq-item">
-            <strong>My payment was successful but I am not connected.</strong>
-            <span>Please contact support with your phone number and payment reference.</span>
-        </div>
-
-        <div class="faq-item">
-            <strong>Can I reconnect after restarting my phone?</strong>
-            <span>Yes. If your data is still valid and not exhausted, reconnect to the Wi-Fi and the system should reconnect you.</span>
-        </div>
-
-        <div class="faq-item">
-            <strong>What happens when my data finishes?</strong>
-            <span>You will be redirected to buy another data package.</span>
-        </div>
-
-        <div class="faq-item">
-            <strong>Can I get free trial access?</strong>
-            <span>Yes. The system is designed to support a free 50MB trial before payment.</span>
-        </div>
+        @for($i = 1; $i <= 4; $i++)
+            <div class="faq-item">
+                <strong>{{ $s["faq_{$i}_question"] ?? '' }}</strong>
+                <span>{{ $s["faq_{$i}_answer"] ?? '' }}</span>
+            </div>
+        @endfor
     </div>
 </section>
 
 <footer class="footer">
     <div class="footer-inner">
         <div>
-            <strong>WaveISP</strong>
-            <p>Connect. Surf. Live.</p>
+            <strong>{{ $brand }}<span>.</span></strong>
+            <p>{{ $footerText }}</p>
         </div>
 
         <div>
-            <a href="{{ route('portal.home') }}">Home</a> |
-            <a href="{{ route('portal.plans') }}">Plans</a> |
+            <a href="{{ route('portal.home') }}">Home</a>
+            <a href="{{ route('portal.plans') }}">Plans</a>
             <a href="{{ route('portal.support') }}">Support</a>
         </div>
 
         <div>
-            <p>© 2026 WaveISP. All rights reserved.</p>
+            <p>📞 {{ $phone }}</p>
+            <p>📍 {{ $location }}</p>
+            <p>© 2026 {{ $brand }}. All rights reserved.</p>
         </div>
     </div>
 </footer>

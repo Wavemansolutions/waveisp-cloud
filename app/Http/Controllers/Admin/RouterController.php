@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Router;
+use App\Models\RouterJob;
 use App\Services\MikrotikService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RouterController extends Controller
 {
@@ -36,6 +38,8 @@ class RouterController extends Controller
 
         $data['api_ssl'] = $request->boolean('api_ssl');
         $data['is_active'] = $request->boolean('is_active');
+        $data['sync_mode'] = 'agent';
+        $data['agent_token'] = Str::random(48);
 
         Router::create($data);
 
@@ -68,6 +72,11 @@ class RouterController extends Controller
 
         $data['api_ssl'] = $request->boolean('api_ssl');
         $data['is_active'] = $request->boolean('is_active');
+        $data['sync_mode'] = $router->sync_mode ?: 'agent';
+
+        if (blank($router->agent_token)) {
+            $data['agent_token'] = Str::random(48);
+        }
 
         $router->update($data);
 
@@ -93,5 +102,47 @@ class RouterController extends Controller
             ->route('admin.routers.index')
             ->with($result['success'] ? 'success' : 'error', $result['message'])
             ->with('mikrotik_data', $result['data']);
+    }
+
+    public function agent(Router $router)
+    {
+        if (blank($router->agent_token)) {
+            $router->update([
+                'sync_mode' => 'agent',
+                'agent_token' => Str::random(48),
+            ]);
+        }
+
+        $router->loadCount([
+            'jobs as pending_jobs_count' => fn ($query) => $query->where('status', 'pending'),
+            'jobs as processing_jobs_count' => fn ($query) => $query->where('status', 'processing'),
+            'jobs as completed_jobs_count' => fn ($query) => $query->where('status', 'completed'),
+            'jobs as failed_jobs_count' => fn ($query) => $query->where('status', 'failed'),
+        ]);
+
+        $jobs = RouterJob::where('router_id', $router->id)
+            ->with('customer')
+            ->latest()
+            ->limit(20)
+            ->get();
+
+        $agentUrl = route('agent.script', [
+            'router' => $router,
+            'token' => $router->agent_token,
+        ]);
+
+        return view('admin.routers.agent', compact('router', 'jobs', 'agentUrl'));
+    }
+
+    public function regenerateAgentToken(Router $router)
+    {
+        $router->update([
+            'sync_mode' => 'agent',
+            'agent_token' => Str::random(48),
+        ]);
+
+        return redirect()
+            ->route('admin.routers.agent', $router)
+            ->with('success', 'Router agent token regenerated successfully.');
     }
 }

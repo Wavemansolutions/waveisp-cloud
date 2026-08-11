@@ -276,6 +276,10 @@
                                     <button class="btn btn-green" type="submit">Test</button>
                                 </form>
 
+                                <a href="{{ route('admin.routers.agent', $router) }}" class="btn">
+                                    Agent
+                                </a>
+
                                 <a href="{{ route('admin.routers.edit', $router) }}" class="btn btn-gray">
                                     Edit
                                 </a>
