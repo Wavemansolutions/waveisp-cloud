@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RouterController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\PortalController;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,12 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])
     ->middleware('auth')
     ->name('admin.logout');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [DashboardController::class, 'index'])
-        ->name('admin.dashboard');
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    Route::resource('routers', RouterController::class);
+
+    Route::post('routers/{router}/test', [RouterController::class, 'test'])
+        ->name('routers.test');
 });
