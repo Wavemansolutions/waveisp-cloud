@@ -6,6 +6,8 @@ use App\Models\Customer;
 use App\Models\Payment;
 use App\Models\Plan;
 use App\Models\Router;
+use App\Services\PaystackService;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -53,7 +55,7 @@ class PortalController extends Controller
         ]);
     }
 
-    public function submit(Request $request, Plan $plan)
+    public function submit(Request $request, Plan $plan, PaystackService $paystack)
     {
         if (! $plan->is_active) {
             abort(404);
@@ -73,7 +75,7 @@ class PortalController extends Controller
 
         $router = Router::where('is_active', true)->first();
 
-        $accessCode = 'WAVE-' . strtoupper(Str::random(10));
+        $voucherPassword = 'WAVE-' . strtoupper(Str::random(10));
 
         $customer = Customer::create([
             'full_name' => $data['full_name'],
@@ -82,8 +84,8 @@ class PortalController extends Controller
             'mac_address' => strtoupper($data['hotspot_mac'] ?? ''),
             'ip_address' => $data['hotspot_ip'] ?? null,
             'last_seen_at' => now(),
-            'username' => $accessCode,
-            'password' => $accessCode,
+            'username' => $voucherPassword,
+            'password' => $voucherPassword,
             'router_id' => $router?->id,
             'plan_id' => $plan->id,
             'status' => 'pending',
@@ -103,10 +105,20 @@ class PortalController extends Controller
             'hotspot_captured_at' => now(),
         ]);
 
-        return view('portal.checkout_pending', [
-            'plan' => $plan,
-            'customer' => $customer,
-            'payment' => $payment,
-        ]);
+        try {
+            $paystackData = $paystack->initialize($payment);
+
+            if (! empty($paystackData['authorization_url'])) {
+                return redirect()->away($paystackData['authorization_url']);
+            }
+
+            throw new Exception('Paystack did not return an authorization URL.');
+        } catch (Exception $e) {
+            return view('portal.checkout_pending', [
+                'plan' => $plan,
+                'customer' => $customer,
+                'payment' => $payment,
+            ])->with('error', $e->getMessage());
+        }
     }
 }
