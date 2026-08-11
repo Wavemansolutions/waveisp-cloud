@@ -1118,6 +1118,283 @@
                 grid-template-columns: 1fr;
             }
         }
+        .customer-pitch-section {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 26px 24px 42px;
+        }
+
+        .customer-pitch-title {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .customer-pitch-title h2 {
+            margin: 0;
+            font-size: 38px;
+            line-height: 1.15;
+            font-weight: 950;
+            color: #06143d;
+        }
+
+        .customer-pitch-title h2 span {
+            color: #0b63f6;
+        }
+
+        .customer-pitch-title p {
+            margin: 12px auto 0;
+            max-width: 820px;
+            color: #435273;
+            font-size: 17px;
+            line-height: 1.6;
+            font-weight: 650;
+        }
+
+        .customer-pitch-card {
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 18px 45px rgba(4, 33, 91, 0.12);
+            border: 1px solid #dfe7f5;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .pitch-photos {
+            background:
+                radial-gradient(circle at 20% 20%, rgba(11, 99, 246, 0.20), transparent 25%),
+                linear-gradient(135deg, #061b51, #0b63f6);
+            padding: 26px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-content: center;
+        }
+
+        .photo-tile {
+            min-height: 190px;
+            border-radius: 22px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 18px 34px rgba(0,0,0,0.24);
+            border: 1px solid rgba(255,255,255,0.18);
+            background: #06143d;
+        }
+
+        .photo-tile.large {
+            grid-column: span 2;
+            min-height: 250px;
+        }
+
+        .photo-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(1.08) contrast(1.03);
+        }
+
+        .photo-label {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            background: rgba(2, 11, 38, 0.78);
+            color: white;
+            padding: 9px 13px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 900;
+            backdrop-filter: blur(6px);
+        }
+
+        .pitch-copy {
+            padding: 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .pitch-copy .tag {
+            display: inline-flex;
+            width: fit-content;
+            background: #eaf3ff;
+            color: #0b63f6;
+            border-radius: 999px;
+            padding: 9px 16px;
+            font-size: 13px;
+            font-weight: 950;
+            margin-bottom: 16px;
+        }
+
+        .pitch-copy h3 {
+            margin: 0;
+            font-size: 34px;
+            line-height: 1.18;
+            color: #06143d;
+            font-weight: 950;
+        }
+
+        .pitch-copy h3 span {
+            color: #0b63f6;
+        }
+
+        .pitch-copy p {
+            color: #435273;
+            line-height: 1.75;
+            font-size: 16px;
+            font-weight: 650;
+            margin: 16px 0 20px;
+        }
+
+        .customer-steps {
+            display: grid;
+            gap: 13px;
+            margin-top: 6px;
+        }
+
+        .customer-step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            background: #f6f9ff;
+            border: 1px solid #e1eafa;
+            border-radius: 16px;
+            padding: 15px;
+        }
+
+        .customer-step-number {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #0b63f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 950;
+            flex: 0 0 auto;
+        }
+
+        .customer-step strong {
+            display: block;
+            color: #06143d;
+            margin-bottom: 3px;
+        }
+
+        .customer-step span {
+            color: #435273;
+            font-size: 14px;
+            font-weight: 650;
+            line-height: 1.45;
+        }
+
+        .pitch-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .pitch-primary,
+        .pitch-secondary {
+            min-height: 50px;
+            padding: 0 24px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 950;
+        }
+
+        .pitch-primary {
+            background: #0b63f6;
+            color: white;
+            box-shadow: 0 12px 24px rgba(11, 99, 246, 0.22);
+        }
+
+        .pitch-secondary {
+            background: white;
+            color: #0b63f6;
+            border: 2px solid #0b63f6;
+        }
+
+        .mini-benefits {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .mini-benefit {
+            background: white;
+            border: 1px solid #dfe7f5;
+            border-radius: 20px;
+            padding: 22px;
+            box-shadow: 0 12px 28px rgba(5, 35, 93, 0.09);
+        }
+
+        .mini-benefit .icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #eaf3ff;
+            color: #0b63f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            margin-bottom: 14px;
+        }
+
+        .mini-benefit h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            color: #06143d;
+        }
+
+        .mini-benefit p {
+            margin: 0;
+            color: #435273;
+            line-height: 1.5;
+            font-weight: 650;
+            font-size: 14px;
+        }
+
+        @media (max-width: 1100px) {
+            .customer-pitch-card {
+                grid-template-columns: 1fr;
+            }
+
+            .mini-benefits {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .customer-pitch-title h2 {
+                font-size: 31px;
+            }
+
+            .pitch-photos {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-tile.large {
+                grid-column: span 1;
+            }
+
+            .pitch-copy {
+                padding: 24px;
+            }
+
+            .pitch-copy h3 {
+                font-size: 28px;
+            }
+
+            .mini-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
         .cta-band {
             max-width: 1280px;
             margin: 0 auto 36px;
@@ -1271,6 +1548,307 @@
                 bottom: 24px;
             }
         }
+            .waveman-benefits {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 28px 24px 46px;
+        }
+
+        .waveman-benefits-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            background:
+                radial-gradient(circle at 82% 16%, rgba(255, 199, 65, 0.28), transparent 20%),
+                radial-gradient(circle at 18% 80%, rgba(11, 99, 246, 0.30), transparent 24%),
+                linear-gradient(135deg, #020817 0%, #071d56 48%, #001b5f 100%);
+            color: white;
+            box-shadow: 0 28px 70px rgba(0, 24, 82, 0.34);
+            border: 1px solid rgba(255,255,255,0.14);
+            padding: 38px;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 34px;
+            align-items: center;
+        }
+
+        .waveman-benefits-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+            background-size: 42px 42px;
+            opacity: 0.55;
+            pointer-events: none;
+        }
+
+        .waveman-benefits-copy,
+        .waveman-benefits-visual {
+            position: relative;
+            z-index: 2;
+        }
+
+        .waveman-benefits-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 199, 65, 0.14);
+            color: #ffd04f;
+            border: 1px solid rgba(255, 199, 65, 0.45);
+            border-radius: 999px;
+            padding: 10px 17px;
+            font-size: 13px;
+            font-weight: 950;
+            letter-spacing: 0.7px;
+            margin-bottom: 18px;
+        }
+
+        .waveman-benefits-copy h2 {
+            margin: 0;
+            font-size: 46px;
+            line-height: 1.08;
+            letter-spacing: -1.4px;
+            font-weight: 950;
+        }
+
+        .waveman-benefits-copy h2 span {
+            color: #ffd04f;
+        }
+
+        .waveman-benefits-copy p {
+            margin: 18px 0 24px;
+            color: #dce9ff;
+            line-height: 1.75;
+            font-size: 16.5px;
+            font-weight: 650;
+            max-width: 590px;
+        }
+
+        .waveman-benefits-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .waveman-benefits-primary,
+        .waveman-benefits-secondary {
+            min-height: 50px;
+            padding: 0 24px;
+            border-radius: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 950;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .waveman-benefits-primary {
+            background: #ffd04f;
+            color: #071743;
+            box-shadow: 0 14px 26px rgba(255, 208, 79, 0.22);
+        }
+
+        .waveman-benefits-secondary {
+            background: rgba(255,255,255,0.10);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.24);
+        }
+
+        .waveman-benefits-primary:hover,
+        .waveman-benefits-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .benefit-photo-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 16px;
+            min-height: 520px;
+        }
+
+        .benefit-photo {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            background: #06143d;
+            min-height: 220px;
+            box-shadow: 0 20px 38px rgba(0,0,0,0.30);
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .benefit-photo.tall {
+            min-height: 520px;
+        }
+
+        .benefit-photo-stack {
+            display: grid;
+            gap: 16px;
+        }
+
+        .benefit-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(1.08) contrast(1.04);
+            transform: scale(1.02);
+        }
+
+        .benefit-photo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, transparent 35%, rgba(2, 8, 23, 0.82) 100%),
+                radial-gradient(circle at 80% 15%, rgba(11, 99, 246, 0.20), transparent 25%);
+        }
+
+        .photo-badge {
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            z-index: 2;
+            background: rgba(2, 8, 23, 0.78);
+            border: 1px solid rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            border-radius: 18px;
+            padding: 13px 14px;
+        }
+
+        .photo-badge strong {
+            display: block;
+            color: white;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .photo-badge span {
+            display: block;
+            color: #dce9ff;
+            font-size: 12.5px;
+            line-height: 1.35;
+            font-weight: 700;
+        }
+
+        .floating-feature {
+            position: absolute;
+            z-index: 3;
+            right: 26px;
+            top: 26px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .floating-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.13);
+            border: 1px solid rgba(255,255,255,0.20);
+            color: white;
+            backdrop-filter: blur(9px);
+            border-radius: 999px;
+            padding: 9px 13px;
+            font-size: 12.5px;
+            font-weight: 900;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+        }
+
+        .floating-feature-item span {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #ffd04f;
+            color: #06143d;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .waveman-benefits-strip {
+            margin-top: 18px;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 13px;
+        }
+
+        .waveman-benefits-mini {
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.18);
+            color: white;
+            border-radius: 18px;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 12.5px;
+            font-weight: 900;
+            min-height: 92px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .waveman-benefits-mini span {
+            font-size: 27px;
+        }
+
+        @media (max-width: 1100px) {
+            .waveman-benefits-card {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-photo-grid {
+                min-height: auto;
+            }
+
+            .benefit-photo.tall {
+                min-height: 420px;
+            }
+
+            .waveman-benefits-strip {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 760px) {
+            .waveman-benefits-card {
+                padding: 24px;
+                border-radius: 26px;
+            }
+
+            .waveman-benefits-copy h2 {
+                font-size: 34px;
+            }
+
+            .benefit-photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-photo.tall {
+                min-height: 310px;
+            }
+
+            .benefit-photo {
+                min-height: 220px;
+            }
+
+            .floating-feature {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 14px;
+            }
+
+            .waveman-benefits-strip {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1356,111 +1934,144 @@
     </div>
 </div>
 
-<section class="business-section">
-    <div class="section-title">
+<section class="customer-pitch-section">
+    <div class="customer-pitch-title">
         <h2>
-            How the <span>Hotspot Business</span> Works
+            Affordable <span>Internet Access</span> for Everyone
         </h2>
 
         <p>
-            The system connects your internet source, MikroTik router, payment gateway,
-            and customers into one automated billing platform.
+            WaveISP gives customers simple, fast and pocket-friendly internet access.
+            Connect your phone, laptop, shop, office or home devices without stress.
         </p>
     </div>
 
-    <div class="business-card">
-        <div class="hotspot-picture">
-            <div class="diagram-title">HOTSPOT BUSINESS FLOW</div>
-
-            <div class="tower">
-                <div class="signal two"></div>
-                <div class="signal one"></div>
-                <div class="mast"></div>
-                <div class="base"></div>
+    <div class="customer-pitch-card">
+        <div class="pitch-photos">
+            <div class="photo-tile large">
+                <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                    alt="Customer using laptop with internet access"
+                    loading="lazy"
+                >
+                <div class="photo-label">Fast internet for work and study</div>
             </div>
 
-            <div class="cloud">
-                <span>Internet Source<br>Starlink / ISP</span>
+            <div class="photo-tile">
+                <img
+                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80"
+                    alt="Network equipment and internet infrastructure"
+                    loading="lazy"
+                >
+                <div class="photo-label">Stable Wi-Fi network</div>
             </div>
 
-            <div class="flow-line line-one"></div>
-            <div class="flow-line line-two"></div>
-
-            <div class="mikrotik-box">
-                <strong>MikroTik Router</strong>
-                <small>HotSpot Login + User Control</small>
-            </div>
-
-            <div class="customers">
-                <div class="customer-device">
-                    <span class="icon">📱</span>
-                    Phone User
-                </div>
-
-                <div class="customer-device">
-                    <span class="icon">💻</span>
-                    Laptop User
-                </div>
-
-                <div class="customer-device">
-                    <span class="icon">💳</span>
-                    Online Payment
-                </div>
+            <div class="photo-tile">
+                <img
+                    src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=80"
+                    alt="Smart home and connected devices"
+                    loading="lazy"
+                >
+                <div class="photo-label">Home and smart devices</div>
             </div>
         </div>
 
-        <div class="business-text">
+        <div class="pitch-copy">
+            <div class="tag">
+                WHY USERS CHOOSE WAVEISP
+            </div>
+
             <h3>
-                Sell Wi-Fi access and let the system handle <span>billing automatically.</span>
+                Buy affordable internet and
+                <span>start browsing instantly.</span>
             </h3>
 
             <p>
-                Customers connect to your Wi-Fi, choose a plan, enter their details,
-                make payment, and receive internet access. The admin can manage plans,
-                customers, payments, routers, trials, and usage from the dashboard.
+                No long process. No waiting for manual activation.
+                Simply connect to WaveISP Wi-Fi, choose a plan that fits your pocket,
+                pay securely, and enjoy internet access on your phone, laptop,
+                smart TV, CCTV, POS device, office computer or home gadgets.
             </p>
 
-            <div class="business-steps">
-                <div class="business-step">
-                    <div class="step-number">1</div>
+            <div class="customer-steps">
+                <div class="customer-step">
+                    <div class="customer-step-number">1</div>
                     <div>
-                        <strong>Customer joins Wi-Fi</strong>
-                        <span>The captive portal opens on their phone or laptop.</span>
+                        <strong>Connect to WaveISP Wi-Fi</strong>
+                        <span>Join the available Wi-Fi network on your phone, laptop or smart device.</span>
                     </div>
                 </div>
 
-                <div class="business-step">
-                    <div class="step-number">2</div>
+                <div class="customer-step">
+                    <div class="customer-step-number">2</div>
                     <div>
-                        <strong>Customer buys a plan</strong>
-                        <span>They select daily, weekly, or monthly data package.</span>
+                        <strong>Choose an affordable plan</strong>
+                        <span>Select a daily, weekly or monthly package that matches your budget.</span>
                     </div>
                 </div>
 
-                <div class="business-step">
-                    <div class="step-number">3</div>
+                <div class="customer-step">
+                    <div class="customer-step-number">3</div>
                     <div>
-                        <strong>Payment activates access</strong>
-                        <span>WaveISP creates the HotSpot user and connects them.</span>
+                        <strong>Pay and get connected</strong>
+                        <span>After payment, your access is activated and you can start browsing.</span>
                     </div>
                 </div>
 
-                <div class="business-step">
-                    <div class="step-number">4</div>
+                <div class="customer-step">
+                    <div class="customer-step-number">4</div>
                     <div>
-                        <strong>Admin monitors everything</strong>
-                        <span>Track customers, revenue, usage, routers, and failed payments.</span>
+                        <strong>Enjoy reliable support</strong>
+                        <span>Need help with payment, login or connection? WaveISP support is ready.</span>
                     </div>
                 </div>
             </div>
+
+            <div class="pitch-buttons">
+                <a href="{{ route('portal.plans') }}" class="pitch-primary">
+                    View Data Plans →
+                </a>
+
+                <a href="{{ route('portal.support') }}" class="pitch-secondary">
+                    Contact Support
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mini-benefits">
+        <div class="mini-benefit">
+            <div class="icon">💰</div>
+            <h3>Pocket-Friendly Plans</h3>
+            <p>Choose from daily, weekly and monthly internet packages that fit your budget.</p>
+        </div>
+
+        <div class="mini-benefit">
+            <div class="icon">⚡</div>
+            <h3>Instant Activation</h3>
+            <p>Pay online and get access quickly without waiting for manual setup.</p>
+        </div>
+
+        <div class="mini-benefit">
+            <div class="icon">📶</div>
+            <h3>Connect More Devices</h3>
+            <p>Use WaveISP for phones, laptops, smart TVs, CCTV, POS and office devices.</p>
+        </div>
+
+        <div class="mini-benefit">
+            <div class="icon">🎧</div>
+            <h3>Help When Needed</h3>
+            <p>Support is available when you need help with login, payment or browsing.</p>
         </div>
     </div>
 </section>
 
-<section class="benefit-showcase">
-    <div class="benefit-hero-card">
-        <div class="benefit-copy">
-            <div class="tag">WAVEMAN ISP CUSTOMER BENEFITS</div>
+<section class="waveman-benefits">
+    <div class="waveman-benefits-card">
+        <div class="waveman-benefits-copy">
+            <div class="waveman-benefits-tag">
+                📡 WAVEMAN ISP CUSTOMER BENEFITS
+            </div>
 
             <h2>
                 More than internet.
@@ -1474,105 +2085,87 @@
                 smart door locks, video doorbells, smart lighting, phones, laptops and office systems.
             </p>
 
-            <div class="benefit-actions">
-                <a href="{{ route('portal.plans') }}" class="benefit-primary">
+            <div class="waveman-benefits-actions">
+                <a href="{{ route('portal.plans') }}" class="waveman-benefits-primary">
                     Buy Internet Plan →
                 </a>
 
-                <a href="{{ route('portal.support') }}" class="benefit-secondary">
+                <a href="{{ route('portal.support') }}" class="waveman-benefits-secondary">
                     Talk to Support
                 </a>
             </div>
-        </div>
 
-        <div class="benefit-visual">
-            <div class="signal-ring"></div>
-            <div class="signal-ring two"></div>
-
-            <div class="benefit-badges">
-                <div class="benefit-badge">
-                    <div class="badge-icon">📡</div>
-                    <div>
-                        <strong>Starlink / ISP Ready</strong>
-                        <small>Stable source internet</small>
-                    </div>
+            <div class="waveman-benefits-strip">
+                <div class="waveman-benefits-mini">
+                    <span>📶</span>
+                    Reliable Wi-Fi
                 </div>
 
-                <div class="benefit-badge">
-                    <div class="badge-icon">📶</div>
-                    <div>
-                        <strong>Wi-Fi Hotspot Access</strong>
-                        <small>Login, pay and browse</small>
-                    </div>
+                <div class="waveman-benefits-mini">
+                    <span>💳</span>
+                    Easy Payment
                 </div>
 
-                <div class="benefit-badge">
-                    <div class="badge-icon">💳</div>
-                    <div>
-                        <strong>Online Payment</strong>
-                        <small>Instant access after payment</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="smart-house">
-                <div class="dish"></div>
-                <div class="house-window window-one"></div>
-                <div class="house-window window-two"></div>
-            </div>
-
-            <div class="device-row">
-                <div class="device-item">
+                <div class="waveman-benefits-mini">
                     <span>🎥</span>
-                    Smart CCTV
+                    CCTV Ready
                 </div>
 
-                <div class="device-item">
+                <div class="waveman-benefits-mini">
                     <span>🔐</span>
-                    Door Lock
+                    Smart Locks
                 </div>
 
-                <div class="device-item">
-                    <span>📱</span>
-                    Phone Users
-                </div>
-
-                <div class="device-item">
-                    <span>💻</span>
-                    Office Devices
-                </div>
-
-                <div class="device-item">
+                <div class="waveman-benefits-mini">
                     <span>💡</span>
                     Smart Lighting
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="user-benefits-grid">
-        <div class="user-benefit">
-            <div class="icon">⚡</div>
-            <h3>Fast Activation</h3>
-            <p>Users choose a plan, pay, and get connected without waiting for manual setup.</p>
-        </div>
+        <div class="waveman-benefits-visual">
+            <div class="benefit-photo-grid">
+                <div class="benefit-photo tall">
+                    <img
+                        src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
+                        alt="Modern connected home using reliable internet"
+                        loading="lazy"
+                    >
 
-        <div class="user-benefit">
-            <div class="icon">📶</div>
-            <h3>Better Wi-Fi Access</h3>
-            <p>WaveISP helps control hotspot users, login sessions, plans and access codes.</p>
-        </div>
+                    <div class="photo-badge">
+                        <strong>Connected Home & Business</strong>
+                        <span>Stable internet for browsing, work, smart devices and entertainment.</span>
+                    </div>
+                </div>
 
-        <div class="user-benefit">
-            <div class="icon">🛡️</div>
-            <h3>Reliable Connection</h3>
-            <p>Useful for homes, offices, shops, estates, schools, lounges and small businesses.</p>
-        </div>
+                <div class="benefit-photo-stack">
+                    <div class="benefit-photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=85"
+                            alt="Smart home devices connected to Wi-Fi"
+                            loading="lazy"
+                        >
 
-        <div class="user-benefit">
-            <div class="icon">🎧</div>
-            <h3>Support Ready</h3>
-            <p>Customers can reach support when payment, login or connection issues happen.</p>
+                        <div class="photo-badge">
+                            <strong>Smart Devices</strong>
+                            <span>CCTV, smart lighting, video doorbells and access systems.</span>
+                        </div>
+                    </div>
+
+                    <div class="benefit-photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=85"
+                            alt="Laptop user enjoying internet access"
+                            loading="lazy"
+                        >
+
+                        <div class="photo-badge">
+                            <strong>Work, Study & Browse</strong>
+                            <span>Affordable plans for phones, laptops, shops, offices and homes.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
