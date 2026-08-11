@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RouterController;
+use App\Http\Controllers\Admin\VpnController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PortalController;
@@ -22,8 +23,17 @@ Route::get('/buy/{plan}', [PortalController::class, 'buy'])
 Route::post('/buy/{plan}', [PortalController::class, 'submit'])
     ->name('portal.buy.submit');
 
+Route::get('/payment/callback', [PaymentController::class, 'callback'])
+    ->name('payment.callback');
+
+Route::post('/webhooks/paystack', [PaymentController::class, 'webhook'])
+    ->name('payment.webhook');
+
 Route::post('/payment/test-activate/{payment}', [PaymentController::class, 'testActivate'])
     ->name('payment.testActivate');
+
+Route::post('/payment/retry-mikrotik/{payment}', [PaymentController::class, 'retryMikrotik'])
+    ->name('payment.retryMikrotik');
 
 Route::get('/payment/success/{payment}', [PaymentController::class, 'success'])
     ->name('payment.success');
@@ -41,6 +51,9 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
+
+    Route::get('/vpn', [VpnController::class, 'index'])
+        ->name('vpn.index');
 
     Route::resource('routers', RouterController::class);
 
