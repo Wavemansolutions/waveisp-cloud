@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RouterController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PortalController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,12 @@ Route::get('/buy/{plan}', [PortalController::class, 'buy'])
 
 Route::post('/buy/{plan}', [PortalController::class, 'submit'])
     ->name('portal.buy.submit');
+
+Route::post('/payment/test-activate/{payment}', [PaymentController::class, 'testActivate'])
+    ->name('payment.testActivate');
+
+Route::get('/payment/success/{payment}', [PaymentController::class, 'success'])
+    ->name('payment.success');
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])
     ->name('login');
