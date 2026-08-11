@@ -52,7 +52,7 @@ class PaymentActivationService
 
             $customer = $customer->fresh(['router', 'plan']);
 
-            if (env('ROUTER_SYNC_MODE', 'agent') === 'agent') {
+            if (config('waveisp.router_sync_mode', 'agent') === 'agent') {
                 $job = RouterJob::create([
                     'router_id' => $customer->router_id,
                     'customer_id' => $customer->id,
