@@ -4,10 +4,11 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\RouterController;
-use App\Http\Controllers\Admin\StatisticsController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\StatisticsController;
 use App\Http\Controllers\Admin\VpnController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\ConnectController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\RouterAgentController;
@@ -15,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PortalController::class, 'home'])
     ->name('portal.home');
+
+
+Route::get('/connect', [ConnectController::class, 'connect'])
+    ->name('portal.connect');
+
+Route::post('/connect/validate', [ConnectController::class, 'validateVoucher'])
+    ->name('portal.connect.validate');
 
 Route::get('/plans', [PortalController::class, 'plans'])
     ->name('portal.plans');
@@ -65,6 +73,12 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     Route::get('/statistics', [StatisticsController::class, 'index'])
         ->name('statistics');
+
+    Route::get('/settings', [SettingController::class, 'index'])
+        ->name('settings.index');
+
+    Route::post('/settings', [SettingController::class, 'update'])
+        ->name('settings.update');
 
     Route::post('plans/{plan}/toggle', [PlanController::class, 'toggle'])
         ->name('plans.toggle');

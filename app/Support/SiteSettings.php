@@ -21,11 +21,11 @@ class SiteSettings
             'support_phone' => ['group' => 'contact', 'type' => 'text', 'value' => '+234 813 696 3037'],
             'support_whatsapp' => ['group' => 'contact', 'type' => 'text', 'value' => '2348136963037'],
             'business_location' => ['group' => 'contact', 'type' => 'text', 'value' => 'Port Harcourt, Rivers State'],
-            'footer_text' => ['group' => 'contact', 'type' => 'textarea', 'value' => 'Cloud HotSpot billing for MikroTik routers. Built for Wi-Fi businesses, estates, schools, lounges, homes and local internet providers.'],
+            'footer_text' => ['group' => 'contact', 'type' => 'textarea', 'value' => 'Cloud HotSpot billing for MikroTik routers.'],
 
-            'home_badge' => ['group' => 'home_page', 'type' => 'text', 'value' => 'Oracle-style Cloud Billing + MikroTik Agent'],
+            'home_badge' => ['group' => 'home_page', 'type' => 'text', 'value' => 'Cloud Billing + MikroTik Agent'],
             'home_title' => ['group' => 'home_page', 'type' => 'text', 'value' => 'WaveISP Cloud MikroTik HotSpot Billing'],
-            'home_subtitle' => ['group' => 'home_page', 'type' => 'textarea', 'value' => 'A cloud billing system designed for MikroTik HotSpot. Customers connect to Wi-Fi, choose a plan, pay online, and get internet access.'],
+            'home_subtitle' => ['group' => 'home_page', 'type' => 'textarea', 'value' => 'Customers connect to Wi-Fi, choose a plan, pay online, and get internet access.'],
 
             'plans_title' => ['group' => 'plans_page', 'type' => 'text', 'value' => 'Choose the Perfect Plan for You'],
             'plans_subtitle' => ['group' => 'plans_page', 'type' => 'textarea', 'value' => 'Select a data package, pay securely, and get connected instantly.'],
@@ -71,19 +71,17 @@ class SiteSettings
 
     public static function all(): array
     {
-        $settings = [];
-
-        foreach (self::defaults() as $key => $item) {
-            $settings[$key] = $item['value'];
-        }
+        $settings = collect(self::defaults())
+            ->mapWithKeys(fn ($item, $key) => [$key => $item['value']])
+            ->toArray();
 
         if (! Schema::hasTable('site_settings')) {
             return $settings;
         }
 
-        $rows = SiteSetting::where('is_public', true)->get();
+        self::ensureDefaults();
 
-        foreach ($rows as $row) {
+        foreach (SiteSetting::where('is_public', true)->get() as $row) {
             $settings[$row->setting_key] = $row->setting_value;
         }
 

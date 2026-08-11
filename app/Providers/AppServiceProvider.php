@@ -16,10 +16,12 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        try {
-            View::share('siteSettings', SiteSettings::all());
-        } catch (Throwable $e) {
-            View::share('siteSettings', []);
-        }
+        View::composer('*', function ($view) {
+            try {
+                $view->with('siteSettings', SiteSettings::all());
+            } catch (Throwable $e) {
+                $view->with('siteSettings', []);
+            }
+        });
     }
 }
