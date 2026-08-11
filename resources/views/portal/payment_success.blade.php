@@ -105,7 +105,7 @@
 
         .access-box {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 14px;
             margin: 22px 0;
         }
@@ -171,10 +171,10 @@
     <div class="card">
         @if($payment->customer?->mikrotik_created)
             <div class="badge">Internet Activated</div>
-            <h1>Your WaveISP Access Is Ready</h1>
+            <h1>Your WaveISP Voucher Is Ready</h1>
             <p>
                 Your payment is successful and your HotSpot user has been created on MikroTik.
-                Connect to the Wi-Fi and use your access details below.
+                Connect to the Wi-Fi and use your voucher password below.
             </p>
         @else
             <div class="badge badge-error">Activation Needs Attention</div>
@@ -201,14 +201,11 @@
 
         <div class="access-box">
             <div class="access-item">
-                <small>Username</small>
-                <strong>{{ $payment->customer?->username ?? '-' }}</strong>
-            </div>
-
-            <div class="access-item">
-                <small>Password</small>
+                <small>Voucher Password</small>
                 <strong>{{ $payment->customer?->password ?? '-' }}</strong>
             </div>
+
+            
         </div>
 
         <div class="details">

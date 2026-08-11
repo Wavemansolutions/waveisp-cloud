@@ -126,7 +126,7 @@
         <p>
             Your order has been created. The next step is real Paystack payment.
             For local testing, use the test activation button below to mark the payment successful
-            and send the customer to MikroTik.
+            and create the customer voucher on MikroTik.
         </p>
 
         <div class="details">
@@ -156,15 +156,15 @@
             </div>
 
             <div class="row">
-                <strong>Access Code</strong>
-                <span>{{ $customer->username }}</span>
+                <strong>Voucher Password</strong>
+                <span>{{ $customer->password }}</span>
             </div>
         </div>
 
         <form method="POST" action="{{ route('payment.testActivate', $payment) }}">
             @csrf
             <button type="submit" class="btn btn-green">
-                Local Test: Mark Paid & Create MikroTik User
+                Local Test: Mark Paid & Create MikroTik Voucher
             </button>
         </form>
 

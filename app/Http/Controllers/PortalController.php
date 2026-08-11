@@ -73,7 +73,7 @@ class PortalController extends Controller
 
         $router = Router::where('is_active', true)->first();
 
-        $accessCode = 'WAVE' . strtoupper(Str::random(8));
+        $accessCode = 'WAVE-' . strtoupper(Str::random(10));
 
         $customer = Customer::create([
             'full_name' => $data['full_name'],
