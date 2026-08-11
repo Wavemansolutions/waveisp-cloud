@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\VpnController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PortalController;
+use App\Http\Controllers\RouterAgentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PortalController::class, 'home'])
@@ -37,6 +38,20 @@ Route::post('/payment/retry-mikrotik/{payment}', [PaymentController::class, 'ret
 
 Route::get('/payment/success/{payment}', [PaymentController::class, 'success'])
     ->name('payment.success');
+
+
+Route::get('/agent/routers/{router}/script', [RouterAgentController::class, 'script'])
+    ->name('agent.script');
+
+Route::get('/agent/jobs/{job}/ack', [RouterAgentController::class, 'ack'])
+    ->name('agent.ack');
+
+
+Route::get('/agent/routers/{router}/script', [RouterAgentController::class, 'script'])
+    ->name('agent.script');
+
+Route::get('/agent/jobs/{job}/ack', [RouterAgentController::class, 'ack'])
+    ->name('agent.ack');
 
 Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])
     ->name('login');
