@@ -353,6 +353,7 @@
             }
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
 
@@ -428,10 +429,6 @@
                             <span>After payment, you will receive one voucher password to connect.</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="voucher-note">
-                    No username will be shown to the customer. Your voucher password is your access code for internet login.
                 </div>
             </div>
         </section>

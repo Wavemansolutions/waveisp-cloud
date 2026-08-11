@@ -114,6 +114,7 @@
             margin-top: 16px;
         }
     </style>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
 
